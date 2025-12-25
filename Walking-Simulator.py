@@ -7,20 +7,26 @@ finalPosition = [] # The final position of the paths and puts it into a list
 
 # repeats the task 
 for i in range(walks) :
-  position = 0 
+  LR = 0
+  FB = 0
   direct = 0
 
   # while loop determines the directions it goes 
   while direct <10000 :
 # The movement is turns essentially 
-        movement = random.randint(0,1)
+        movement = random.randint(0,3)
         if movement == 0 : # represents a right turn
-            position += 1
-        else :             # if you dont go right you go left 
-         position -= 1
-        direct = direct + 1
+            LR += 1
+        elif movement == 1 : # represents a left turn 
+          LR -=1.    
+        elif movement == 2 : # represents a step forward
+          FB += 1  
+        else :   # represents a step back           
+         FB -= 1
+        direct += 1
+      
   # appends final position therefore making it easier to calculate
-        finalPosition.append(position) 
+        finalPosition.append(math.sqrt(LR**2 + FB**2)) 
 
 
 # Calculates Mean, Std Dev, & Variance
